@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Changing Background</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div>
+            <button id="button1">#051927</button>
+            <button id="button2">#008793</button>
+        </div>
+        <h2>Copy your code here</h2>
+        <div class="copycode" id="copyDiv">background: rgb(2,0,36);
+            background-image: linear-gradient(to right, rgb(92, 145, 229), rgb(152, 63, 198));</div>
+    </section>
+
+    <script>
+        let btn1 = document.getElementById("button1");
+        let btn2 = document.getElementById("button2");
+        let copyDiv = document.getElementById("copyDiv");
+
+        let rgb1 = "#051927";
+        let rgb2 = "#008793";
+        
+        const hex = () => {
+        let hexChars = "0123456789abcdef"; // Added '0' at the beginning
+        let color = "#"; 
+        for (let i = 0; i < 6; i++) {
+        color += hexChars[Math.floor(Math.random() * 16)];
+        }
+    return color;
+};
+
+
+        const handleButton1 = () => { 
+            rgb1 = hex();
+            updateBackground();
+        };
+
+        const handleButton2 = () => { 
+            rgb2 = hex();
+            updateBackground();
+        };
+
+        const updateBackground = () => {
+            document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+            copyDiv.innerHTML = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2});`;
+        };
+
+        btn1.addEventListener("click", handleButton1);
+        btn2.addEventListener("click", handleButton2);
+    </script>
+</body>
+</html>
+
